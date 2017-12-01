@@ -11,10 +11,11 @@ router.get('/', async (req, res) => {
 
   if (req.session.logged) {
     res.render('photos/index.ejs', {
-      photos: allPhotos
+      photos: allPhotos,
+      username: req.session.username
     });
   } else {
-    res.redirect('/photos/login');
+    res.redirect('/login');
   }
 });
 

@@ -23,8 +23,6 @@ app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(morgan('dev'));
 
-// app.use('/users', usersModel);
-
 app.use(session({
 	 secret: "aspdfoioneweoijfdsl", //a random string do not copy this value or your stuff will get hacked
 	 resave: false,
@@ -37,9 +35,8 @@ const commentsController = require('./controllers/comments.js');
 const sessionsController = require('./controllers/session.js');
 
 app.use('/photos', photosController);
-app.use('/photos/comments', commentsController);
-app.use('/photos/login', sessionsController);
-
+app.use('/comments', commentsController);
+app.use('/login', sessionsController);
 
 // root route
 app.get('/', (req, res) => res.redirect('/photos'));
