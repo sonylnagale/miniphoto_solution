@@ -20,11 +20,16 @@ router.get('/', async (req, res) => {
 });
 
 // show route
-// router.get('/:id', async (req, res) => {
-//   const onePhoto = await Photo.findById(req.params.id);
-//   const comments = await Comment.find({ photo: onePhoto._id });
-//   res.render('photos/show.ejs', { onePhoto, comments });
-// });
+router.get('/:id', async (req, res) => {
+  const onePhoto = await Photo.findById(req.params.id);
+  const comments = await Comment.find({ photo: onePhoto._id });
+
+  res.render('photos/show.ejs', {
+    onePhoto: onePhoto,
+    comments: comments,
+    username: req.session.username
+ });
+});
 
 // create route
 router.post('/', async (req, res) => {

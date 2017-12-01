@@ -5,20 +5,22 @@
     <title></title>
   </head>
   <body>
+    <%- include ../header.ejs %>
+
     <img src='<%= onePhoto.url %>' />
-    
+
     <% for (let comment of comments) { %>
       <p><strong><%= comment.author %></strong> - <%= comment.content %></p>
     <% } %>
-    
+
     <h3>Add a comment!</h3>
-    
+
     <form action='/comments' method='post'>
       <input type='text' name='content' placeholder='content' />
       <input type='text' name='author' placeholder='author' />
       <input type='hidden' name='photo' value='<%= onePhoto._id %>' />
       <input type='submit' />
     </form>
-    
+
   </body>
 </html>

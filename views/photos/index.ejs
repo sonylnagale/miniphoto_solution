@@ -5,9 +5,7 @@
     <title></title>
   </head>
   <body>
-    <header>
-      Welcome, <%= username %>. <a href="/login/logout">Log out</a>
-    </header>
+    <%- include ../header.ejs %>
 
     <% for (let i = 0; i < photos.length; i++) { %>
       <a href="/photos/<%= photos[i].id %>/"><img src="<%= photos[i].url %>" /></a>
