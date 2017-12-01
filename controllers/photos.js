@@ -8,15 +8,22 @@ const Comment = require('../models/comments.js');
 // index route
 router.get('/', async (req, res) => {
   const allPhotos = await Photo.find();
-  res.send(allPhotos);
+
+  if (req.session.logged) {
+    res.render('photos/index.ejs', {
+      photos: allPhotos
+    });
+  } else {
+    res.redirect('/photos/login');
+  }
 });
 
 // show route
-router.get('/:id', async (req, res) => {
-  const onePhoto = await Photo.findById(req.params.id);
-  const comments = await Comment.find({ photo: onePhoto._id });
-  res.render('photos/show.ejs', { onePhoto, comments });
-});
+// router.get('/:id', async (req, res) => {
+//   const onePhoto = await Photo.findById(req.params.id);
+//   const comments = await Comment.find({ photo: onePhoto._id });
+//   res.render('photos/show.ejs', { onePhoto, comments });
+// });
 
 // create route
 router.post('/', async (req, res) => {
