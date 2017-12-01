@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const createdPhoto = await Photo.create(req.body);
-    res.send(createdPhoto);
+    res.redirect('/');
   } catch (err) {
     res.send(err.message);
   }

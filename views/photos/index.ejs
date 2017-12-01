@@ -11,5 +11,12 @@
       <a href="/photos/<%= photos[i].id %>/"><img src="<%= photos[i].url %>" /></a>
     <% } %>
 
+
+    <form action="/photos" method="post">
+      URL: <input name="url" /><br/>
+      Author: <input name="submitted_by" placeholder="<%= username %>" />
+
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
